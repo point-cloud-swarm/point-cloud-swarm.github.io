@@ -1,0 +1,125 @@
+/* White academic robotics presentation, following Nerfies / Agile But Safe. */
+:root{color-scheme:light;--ink:#363636;--body:#4a4a4a;--muted:#707070;--link:#3273dc;--soft:#f5f5f5;--line:#dedede}
+*{box-sizing:border-box}html{scroll-padding-top:28px}body{margin:0;background:#fff;color:var(--body);font-family:'Noto Sans',sans-serif;font-size:16px;line-height:1.5}button,a,summary{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer}a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}button:focus-visible,a:focus-visible,summary:focus-visible,video:focus-visible{outline:3px solid #3273dc;outline-offset:4px}img,video{max-width:100%}figure{margin:0}h1,h2,h3,h4,p{margin-top:0}h1,h2,h3,h4{color:var(--ink);font-family:'Noto Sans',sans-serif}
+.container{width:min(1120px,calc(100% - 48px));margin-inline:auto}.skip-link{position:fixed;top:-80px;left:16px;z-index:100;padding:10px 18px;background:#fff;border:2px solid var(--link)}.skip-link:focus{top:12px}
+.publication-header{padding:54px 0 28px;text-align:center}.publication-header h1{margin:0 auto 24px;font-family:'Google Sans',sans-serif;font-size:48px;line-height:1.125;letter-spacing:normal;font-weight:600}.publication-subtitle{margin-bottom:20px;color:#626262;font-size:20px;font-family:'Google Sans',sans-serif}.publication-links{display:flex;align-items:center;justify-content:center;gap:8px}.resource-link{display:inline-flex;align-items:center;gap:8px;padding:7px 18px;min-height:40px;border-radius:24px;background:#363636;color:white;font-size:15px;line-height:1.5}.resource-link:hover{background:#242424;color:white;text-decoration:none}.resource-link[aria-disabled="true"]{background:#4c4c4c;cursor:default}.resource-link svg{width:19px;height:19px}.site-header{background:#fff;border-bottom:1px solid #ededed}.section-nav{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:0 30px;padding-block:4px;font-size:14px;line-height:1.6}.section-nav a{display:flex;align-items:center;justify-content:center;min-height:48px;padding:10px 4px;color:#676767;white-space:nowrap}.section-nav a:hover{color:var(--link)}
+.teaser-section{padding-bottom:6px}.teaser-frame{position:relative;overflow:hidden;border-radius:5px;background:#111}.teaser-frame video{display:block;width:100%;aspect-ratio:16/9}.teaser-control{position:absolute;right:13px;bottom:13px;min-width:65px;border:1px solid #ffffff65;border-radius:4px;padding:4px 12px;background:#161616b5;color:white;font-size:12px;line-height:1.6}.teaser-control:hover{background:#111}.teaser-caption{margin:22px auto 0;text-align:center;font-family:'Google Sans',sans-serif;font-size:19px;line-height:1.55;color:#4c4c4c}.teaser-caption strong{font-weight:600;color:#363636}
+.section{padding:64px 0}.section--first{padding-top:66px}.section--soft{background:var(--soft)}.section-heading{max-width:840px;margin:0 auto 34px;text-align:center}.section-heading h2,.experiment-heading h2{margin-bottom:24px;font-size:40px;line-height:1.125;letter-spacing:normal;font-weight:600}.section-heading p{margin:0;font-size:16px;line-height:1.5}.experiment-heading{text-align:center;margin:0 auto 25px;max-width:850px}.experiment-heading h3,.subsection-heading h3{margin-bottom:9px;font-size:25px;line-height:1.3;font-weight:600;letter-spacing:-.35px}.experiment-heading p{margin:0;font-size:16px;line-height:1.5;color:var(--body)}
+.video-grid{display:grid;gap:26px 22px;align-items:start}.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}.supporting-grid{margin-top:29px}.video-item{min-width:0}.video-item video{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#181818;border:1px solid #d0d0d0;border-radius:4px}.video-item figcaption{text-align:center;padding:10px 5px 0}.video-item h4{margin:0;font-size:16px;line-height:1.4;font-weight:600}.video-item figcaption p{margin:4px 0 0;font-size:13.5px;line-height:1.5;color:#737373}.video-item--featured h4{font-size:18px}.view-label{display:block;color:#888;font-size:10px;text-transform:uppercase;letter-spacing:1.2px;font-weight:600;margin-bottom:3px;line-height:1.6}.onboard-grid{row-gap:28px}.onboard-grid .video-item h4{font-size:15px;font-weight:500}
+.research-figure{margin:34px auto 0}.figure-button{position:relative;display:block;width:100%;padding:0;border:0;border-radius:3px;background:white;cursor:zoom-in;overflow:hidden}.figure-button img{display:block;width:100%;height:auto}.enlarge-mark{position:absolute;bottom:8px;right:8px;display:grid;place-items:center;width:25px;height:25px;background:#ffffffed;color:#5c5c5c;font-size:17px;line-height:1;border:1px solid #ddd;border-radius:3px;opacity:0;transition:opacity .15s}.figure-button:hover .enlarge-mark,.figure-button:focus-visible .enlarge-mark{opacity:1}.research-figure figcaption{max-width:880px;margin:12px auto 0;font-size:14px;line-height:1.6;text-align:center;color:#737373}.research-figure figcaption strong{color:#555;font-weight:600}.scene-crop{aspect-ratio:2600/550}.scene-crop--hall img{transform:translateY(-50%)}
+.scene-crop--corridor{aspect-ratio:2600/537}.scene-crop--hall{aspect-ratio:2600/561}.scene-crop--hall img{transform:translateY(-48.9536%)}
+.method-copy{max-width:888px;margin:0 auto 30px;font-size:16px;line-height:1.5;text-align:justify}.method-copy p{margin-bottom:16px}.subsection-heading{margin:46px auto 23px;text-align:center}.subsection-heading p{margin:0;color:#656565}.comparison-key{margin:15px auto 0;max-width:800px;text-align:center;font-size:13px;color:#777}.additional-runs{margin-top:29px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.additional-runs-title{margin:0;padding:15px 0;font-size:16px;font-weight:600;color:#555}.additional-runs-title span{margin-left:8px;font-size:12px;font-weight:400;color:#8a8a8a}.baseline-grid{padding:8px 0 22px}.baseline-grid .video-item h4{font-size:14px;font-weight:500}
+.page-footer{padding:38px 0 45px;text-align:center;border-top:1px solid #e9e9e9}.back-to-top{font-size:14px}.page-footer p{margin:18px auto 0;font-size:12px;color:#909090;line-height:1.8}.page-footer p a{color:#777;text-decoration:underline;text-underline-offset:2px}.figure-dialog{width:min(1450px,95vw);max-width:95vw;max-height:94vh;padding:40px 15px 15px;border:0;border-radius:5px;background:#fff}.figure-dialog::backdrop{background:#000b}.figure-dialog img{display:block;margin:auto;max-width:100%;max-height:calc(94vh - 60px);object-fit:contain}.dialog-close{position:absolute;right:10px;top:5px;border:0;background:white;color:#333;font-size:29px;line-height:1;padding:2px 10px}.video-error{padding:16px;color:#777;text-align:center;font-size:14px}
+@media(min-width:1600px){.container{width:1200px}}
+@media(max-width:900px){.container{width:calc(100% - 36px)}.video-grid{gap:24px 16px}.section{padding:48px 0}.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}.supporting-grid>.video-item:last-child:nth-child(odd){grid-column:1/-1;width:calc(50% - 8px);justify-self:center}.publication-header{padding-top:38px}}
+@media(max-width:600px){.container{width:calc(100% - 28px)}.publication-header{padding:31px 0 22px}.publication-header h1{font-size:32px}.publication-subtitle{font-size:16px;margin-bottom:17px}.resource-link{min-height:36px;padding:6px 15px;font-size:14px}.section-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 12px;padding-block:6px;font-size:13px}.section-nav a{min-height:36px;padding:7px 4px}.teaser-caption{font-size:16px;margin-top:17px}.desktop-break{display:none}.section{padding:40px 0}.section-heading{margin-bottom:24px}.section-heading h2,.experiment-heading h2{font-size:28px}.section-heading p{font-size:16px}.experiment-heading h3,.subsection-heading h3{font-size:23px}.experiment-heading p{font-size:16px}.grid-2,.grid-3{grid-template-columns:1fr}.supporting-grid>.video-item:last-child:nth-child(odd){grid-column:auto;width:100%}.video-grid{gap:23px}.video-item figcaption{padding-top:8px}.video-item--featured h4{font-size:17px}.video-item figcaption p{font-size:13px}.method-copy{text-align:left}.research-figure{margin-top:26px}.research-figure figcaption{font-size:12px}.enlarge-mark{opacity:1;width:21px;height:21px;bottom:4px;right:4px}.teaser-control{right:7px;bottom:7px;font-size:10px;min-width:53px;padding:3px 8px}}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+
+/* Match Agile But Safe: regular webfont files, 600 headings, normal tracking.
+   Google Sans is reserved for the publication title/subtitle and teaser caption;
+   section headings and body copy use Noto Sans. */
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+}
+.publication-header h1 {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 48px;
+  line-height: 1.125;
+  letter-spacing: normal;
+  font-weight: 600;
+}
+.project-principles {
+  margin: 17px auto 23px;
+  color: #315f77;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 1.5;
+}
+.section-heading h2, .experiment-heading h2 {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.125;
+  letter-spacing: normal;
+}
+.experiment-heading h3, .subsection-heading h3 {
+  font-weight: 600;
+  letter-spacing: normal;
+}
+.video-item h4 { font-weight: 600; }
+.resource-link { font-size: 16px; line-height: 1.5; }
+.resource-link--youtube {
+  gap: 10px;
+  padding: 7px 19px;
+  border: 1px solid #303030;
+  border-radius: 999px;
+  background: #303030;
+  box-shadow: 0 1px 2px #00000012;
+}
+.resource-link--youtube svg {
+  width: 28px;
+  height: 20px;
+  flex: 0 0 auto;
+}
+.resource-link--youtube:hover {
+  background: #1f1f1f;
+  border-color: #1f1f1f;
+}
+.resource-link--github {
+  gap: 9px;
+  padding: 7px 17px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+}
+.resource-link--github svg {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+}
+.resource-link--github[aria-disabled="true"],
+.resource-link--github[aria-disabled="true"]:hover {
+  color: #747b84;
+  background: #f1f2f3;
+  border-color: #e0e2e5;
+  box-shadow: none;
+  cursor: default;
+}
+/* Match the reference's text density and heading-to-copy spacing. */
+.section-heading > :last-child,
+.experiment-heading > :last-child { margin-bottom: 0; }
+#method .section-heading { margin-bottom: 24px; }
+.method-copy strong { color: #315f77; font-weight: 700; }
+.project-video { margin: 42px auto 0; }
+.project-video-frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 5px;
+  background: #111 url('../images/teaser_nomapping_poster.jpg') center / cover no-repeat;
+}
+.project-video-frame video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: contain;
+}
+.project-video figcaption {
+  margin: 13px auto 0;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.project-video figcaption a { color: #636b73; }
+.project-video-quality { display: block; margin-bottom: 4px; color: #555; }
+.teaser-caption { font-size: 20px; line-height: 1.5; }
+.teaser-caption strong { color: #315f77; font-weight: 600; }
+@media (max-width: 600px) {
+  .publication-header h1 { font-size: 32px; }
+  .project-principles { margin: 14px auto 20px; font-size: 20px; }
+  .section-heading h2, .experiment-heading h2 { font-size: 28px; }
+  .teaser-caption { font-size: 16px; }
+  .resource-link { font-size: 14px; }
+}

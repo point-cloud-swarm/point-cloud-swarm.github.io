@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="No Mapping, fully decentralized. Swarm maneuvering directly from local LiDAR point clouds, demonstrated in simulation and real-world formation flights.">
+  <meta name="theme-color" content="#ffffff">
+  <title>Swarm Maneuvering Directly from Point Clouds</title>
+  <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans%7CNoto+Sans%7CCastoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/robotics.css?v=reference-type-2">
+  <script defer src="./static/js/site-config.js?v=youtube-tj6i6WF6xnU"></script>
+  <script defer src="./static/js/robotics.js?v=native-film-1"></script>
+</head>
+<body>
+<a class="skip-link" href="#method">Skip to method and experiments</a>
+
+<header class="site-header" id="top">
+  <nav class="section-nav container" aria-label="Page sections">
+    <a href="#method">Method</a>
+    <a href="#simulation">Simulation</a>
+    <a href="#real-world">Real-world flights</a>
+    <a href="#onboard">Onboard cameras</a>
+  </nav>
+</header>
+
+<section class="publication-header" aria-label="Project title">
+  <div class="container">
+    <h1>Swarm Maneuvering<br>Directly from Point Clouds</h1>
+    <p class="publication-subtitle project-principles">No Mapping, fully decentralized</p>
+    <div class="publication-links" aria-label="Project resources">
+      <!-- Public destinations are configured in static/js/site-config.js. -->
+      <a class="resource-link resource-link--youtube" data-resource="youtube" aria-disabled="true" tabindex="-1" title="YouTube link to be added" aria-label="Watch the project video on YouTube">
+        <svg viewBox="0 0 28 20" aria-hidden="true" focusable="false"><path fill="#ff0033" d="M27.4 3.1C27.1 1.9 26.1 1 24.9.7 22.7.1 14.1.1 14.1.1S5.3.1 3.1.7C1.9 1 .9 1.9.6 3.1 0 5.3 0 10 0 10s0 4.7.6 6.9c.3 1.2 1.3 2.1 2.5 2.4 2.2.6 11 .6 11 .6s8.6 0 10.8-.6c1.2-.3 2.2-1.2 2.5-2.4C28 14.7 28 10 28 10s0-4.7-.6-6.9Z"/><path fill="#fff" d="m11.2 5.8 7.3 4.2-7.3 4.2Z"/></svg>
+        YouTube
+      </a>
+      <a class="resource-link resource-link--github" data-resource="code" role="link" aria-disabled="true" tabindex="-1" title="Code coming soon on GitHub" aria-label="GitHub code coming soon">
+        <svg viewBox="0 0 496 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+        Coming soon
+      </a>
+    </div>
+  </div>
+</section>
+
+<main>
+  <section class="teaser-section container" aria-label="Project overview video">
+    <div class="teaser-frame">
+      <video id="teaser" autoplay muted loop playsinline preload="auto" poster="./static/images/teaser_nomapping_poster.jpg" aria-label="Ten-second overview: swarm maneuvering directly from point clouds. No Mapping, fully decentralized.">
+        <source src="./static/videos/teaser_nomapping.mp4" type="video/mp4">
+      </video>
+      <button class="teaser-control" id="teaser-control" type="button" aria-label="Pause overview video">Pause</button>
+    </div>
+    <p class="teaser-caption">From local point clouds to collective motion.<br><strong>No mapping. No central planner.</strong></p>
+  </section>
+
+  <section class="section section--first" id="method">
+    <div class="container">
+      <div class="section-heading"><h2>Planning Directly from Point Clouds</h2></div>
+      <div class="method-copy">
+        <p><strong>No Mapping.</strong> Each quadrotor constructs clearance constraints directly from its local LiDAR scan, without building an occupancy map. A pretrained network accelerates this geometric step.</p>
+        <p><strong>Fully decentralized.</strong> Each robot plans onboard and exchanges compact optimization updates with its peers to refine a common motion plan. There is no central planner; raw point clouds remain local.</p>
+      </div>
+      <figure class="research-figure">
+      <button class="figure-button " type="button" data-figure="./static/images/fig2.png" data-alt="Method framework: local point-cloud processing, distributed motion planning, and online verification" aria-label="Enlarge figure: Method framework: local point-cloud processing, distributed motion planning, and online verification">
+        <img src="./static/images/fig2.png" alt="Method framework: local point-cloud processing, distributed motion planning, and online verification" width="2600" height="1150" loading="lazy" decoding="async">
+        <span class="enlarge-mark" aria-hidden="true">↗</span>
+      </button><figcaption>Local observations guide a common motion plan. Sensing, optimization, and verification repeat as the swarm moves.</figcaption>
+    </figure>
+      <figure class="project-video" id="project-video" aria-label="Full project video">
+        <div class="project-video-frame">
+          <video id="project-film" controls muted loop playsinline preload="none"
+            width="1920" height="1080"
+            poster="./static/images/teaser_nomapping_poster.jpg"
+            data-src="./static/videos/project_film_1080p.mp4"
+            aria-label="Full project film in 1080p">
+            <a href="./static/videos/project_film_1080p.mp4">Download the full film in 1080p</a>
+          </video>
+        </div>
+        <figcaption>
+          <span class="project-video-quality">Full film · 1080p</span>
+          <a data-resource="youtube" href="https://www.youtube.com/watch?v=tj6i6WF6xnU" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section--soft" id="simulation">
+    <div class="container">
+      <div class="section-heading"><h2>Simulation Experiments</h2><p>Ten quadrotors navigate cluttered obstacles and winding narrow passages.</p></div>
+      <div class="video-grid grid-2 "><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/sim_cluttered_ours.jpg" data-src="./static/videos/sim_cluttered_ours.mp4" aria-label="Cluttered environment"></video>
+      <figcaption><span class="view-label">Proposed planner</span><h4>Cluttered environment</h4><p>Ten quadrotors maneuver around dense obstacles.</p></figcaption>
+    </figure><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/sim_narrow_ours.jpg" data-src="./static/videos/sim_narrow_ours.mp4" aria-label="Winding narrow passages"></video>
+      <figcaption><span class="view-label">Proposed planner</span><h4>Winding narrow passages</h4><p>The formation adapts to the available space.</p></figcaption>
+    </figure></div>
+      <div class="subsection-heading"><h3>Side-by-Side Comparisons</h3><p>The proposed planner and three baselines in the same two environments.</p></div>
+      <div class="video-grid grid-2 "><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/compare_cluttered.jpg" data-src="./static/videos/compare_cluttered.mp4" aria-label="Cluttered environment"></video>
+      <figcaption><h4>Cluttered environment</h4><p>Ours · EGO-Swarm · GRLR · adapted SBC</p></figcaption>
+    </figure><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/compare_narrow.jpg" data-src="./static/videos/compare_narrow.mp4" aria-label="Narrow passages"></video>
+      <figcaption><h4>Narrow passages</h4><p>Ours · EGO-Swarm · GRLR · adapted SBC</p></figcaption>
+    </figure></div>
+      <p class="comparison-key">Within each video: ours, upper left; EGO-Swarm, upper right; GRLR, lower left; adapted SBC, lower right.</p>
+      <div class="additional-runs">
+        <h3 class="additional-runs-title">Individual baseline recordings <span>6 videos</span></h3>
+        <div class="video-grid grid-3 baseline-grid"><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/sim_cluttered_ego.jpg" data-src="./static/videos/sim_cluttered_ego.mp4" aria-label="EGO-Swarm · cluttered"></video>
+      <figcaption><h4>EGO-Swarm · cluttered</h4></figcaption>
+    </figure><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/sim_cluttered_grlr.jpg" data-src="./static/videos/sim_cluttered_grlr.mp4" aria-label="GRLR · cluttered"></video>
+      <figcaption><h4>GRLR · cluttered</h4></figcaption>
+    </figure><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/sim_cluttered_sbc.jpg" data-src="./static/videos/sim_cluttered_sbc.mp4" aria-label="Adapted SBC · cluttered"></video>
+      <figcaption><h4>Adapted SBC · cluttered</h4></figcaption>
+    </figure><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/sim_narrow_ego.jpg" data-src="./static/videos/sim_narrow_ego.mp4" aria-label="EGO-Swarm · narrow passages"></video>
+      <figcaption><h4>EGO-Swarm · narrow passages</h4></figcaption>
+    </figure><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/sim_narrow_grlr.jpg" data-src="./static/videos/sim_narrow_grlr.mp4" aria-label="GRLR · narrow passages"></video>
+      <figcaption><h4>GRLR · narrow passages</h4></figcaption>
+    </figure><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/sim_narrow_sbc.jpg" data-src="./static/videos/sim_narrow_sbc.mp4" aria-label="Adapted SBC · narrow passages"></video>
+      <figcaption><h4>Adapted SBC · narrow passages</h4></figcaption>
+    </figure></div>
+      </div>
+      <figure class="research-figure">
+      <button class="figure-button " type="button" data-figure="./static/images/fig3.png" data-alt="Trajectories and sampled formations for the proposed planner, EGO-Swarm, GRLR, and adapted SBC" aria-label="Enlarge figure: Trajectories and sampled formations for the proposed planner, EGO-Swarm, GRLR, and adapted SBC">
+        <img src="./static/images/fig3.png" alt="Trajectories and sampled formations for the proposed planner, EGO-Swarm, GRLR, and adapted SBC" width="2600" height="1071" loading="lazy" decoding="async">
+        <span class="enlarge-mark" aria-hidden="true">↗</span>
+      </button><figcaption><strong>Trajectories and formation shapes.</strong> Cluttered obstacles on the left; winding narrow passages on the right.</figcaption>
+    </figure>
+    </div>
+  </section>
+
+  <section class="section" id="real-world">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Real-World Swarm Flights</h2>
+        <p>From broad formation turns to chair-lined corridors.<br>Camera footage and point-cloud views show both the motion and the space around it.</p>
+      </div>
+      <div class="experiment" id="loop-flight">
+        <div class="experiment-heading"><h3>Large-Loop Formation Flight</h3><p>Six quadrotors navigate the hall while adapting their paths around pillars and obstacles.</p></div>
+        <div class="video-grid grid-2 "><figure class="video-item video-item--featured">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/flights/hall_loop_formation.jpg" data-src="./static/videos/flights/hall_loop_formation.mp4" aria-label="Six-robot formation flight"></video>
+      <figcaption><span class="view-label">External camera</span><h4>Six-robot formation flight</h4><p>A camera follows the formation through the hall.</p></figcaption>
+    </figure><figure class="video-item video-item--featured">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/pcd_hall_loop.jpg" data-src="./static/videos/pcd_hall_loop.mp4" aria-label="The large-loop trajectory"></video>
+      <figcaption><span class="view-label">Point-cloud view</span><h4>The large-loop trajectory</h4><p>Flight paths within the measured LiDAR scene.</p></figcaption>
+    </figure></div><div class="video-grid grid-3 supporting-grid"><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/flights/hall_six_turn.jpg" data-src="./static/videos/flights/hall_six_turn.mp4" aria-label="Turning as a formation"></video>
+      <figcaption><h4>Turning as a formation</h4><p>Six quadrotors negotiate the turn.</p></figcaption>
+    </figure><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/pcd_hall_loop3.jpg" data-src="./static/videos/pcd_hall_loop3.mp4" aria-label="Another loop through the hall"></video>
+      <figcaption><h4>Another loop through the hall</h4><p>A separate recorded flight through the same environment.</p></figcaption>
+    </figure><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/flights/hall_three_turn.jpg" data-src="./static/videos/flights/hall_three_turn.mp4" aria-label="Three-robot formation"></video>
+      <figcaption><h4>Three-robot formation</h4><p>A smaller formation passes the hall obstacles.</p></figcaption>
+    </figure></div>
+        <figure class="research-figure">
+      <button class="figure-button scene-crop scene-crop--hall" type="button" data-figure="./static/images/fig4.jpg" data-alt="Six-robot flight scenes, point-cloud observations, and the loop trajectory through the hall" aria-label="Enlarge figure: Six-robot flight scenes, point-cloud observations, and the loop trajectory through the hall">
+        <img src="./static/images/fig4.jpg" alt="Six-robot flight scenes, point-cloud observations, and the loop trajectory through the hall" width="2600" height="1099" loading="lazy" decoding="async">
+        <span class="enlarge-mark" aria-hidden="true">↗</span>
+      </button><figcaption><strong>The hall, in context.</strong> Flight observations and the full formation trajectory.</figcaption>
+    </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft" id="corridor-flight">
+    <div class="container">
+      <div class="experiment-heading"><h2>Around the Corridor</h2><p>Three quadrotors follow a ring-shaped corridor, turning through corners and passing between stacks of chairs.</p></div>
+      <div class="video-grid grid-2 "><figure class="video-item video-item--featured">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/flights/corridor_formation_synced.jpg" data-src="./static/videos/flights/corridor_formation_synced.mp4" data-sync-group="corridor" aria-label="Following the three-robot swarm"></video>
+      <figcaption><span class="view-label">External camera</span><h4>Following the three-robot swarm</h4><p>Continuous flight into the chair-lined passage.</p></figcaption>
+    </figure><figure class="video-item video-item--featured">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/flights/pcd_corridor_synced.jpg" data-src="./static/videos/flights/pcd_corridor_synced.mp4" data-sync-group="corridor" aria-label="Around the corridor"></video>
+      <figcaption><span class="view-label">Point-cloud view</span><h4>Around the corridor</h4><p>The same flight through the surrounding point-cloud geometry.</p></figcaption>
+    </figure></div><div class="video-grid grid-3 supporting-grid"><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/flights/corridor_corners.jpg" data-src="./static/videos/flights/corridor_corners.mp4" aria-label="Around the corners"></video>
+      <figcaption><h4>Around the corners</h4></figcaption>
+    </figure><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/flights/corridor_chairs.jpg" data-src="./static/videos/flights/corridor_chairs.mp4" aria-label="Between stacked chairs"></video>
+      <figcaption><h4>Between stacked chairs</h4></figcaption>
+    </figure><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/flights/corridor_return.jpg" data-src="./static/videos/flights/corridor_return.mp4" aria-label="Along the return corridor"></video>
+      <figcaption><h4>Along the return corridor</h4></figcaption>
+    </figure></div>
+      <figure class="research-figure">
+      <button class="figure-button scene-crop scene-crop--corridor" type="button" data-figure="./static/images/fig4.jpg" data-alt="Three-robot corridor flight scenes, point-cloud observations, and the ring-shaped trajectory" aria-label="Enlarge figure: Three-robot corridor flight scenes, point-cloud observations, and the ring-shaped trajectory">
+        <img src="./static/images/fig4.jpg" alt="Three-robot corridor flight scenes, point-cloud observations, and the ring-shaped trajectory" width="2600" height="1099" loading="lazy" decoding="async">
+        <span class="enlarge-mark" aria-hidden="true">↗</span>
+      </button><figcaption><strong>The corridor, in context.</strong> Camera and point-cloud snapshots along the ring-shaped route.</figcaption>
+    </figure>
+    </div>
+  </section>
+
+  <section class="section" id="onboard">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Onboard Cameras</h2>
+        <p>Teammates, obstacles, and turns—from the robots’ own perspective.<br>Short flight excerpts from multiple cameras and recordings.</p>
+      </div>
+      <div class="video-grid grid-3 onboard-grid"><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/flights/loop_onboard_4.jpg" data-src="./static/videos/flights/loop_onboard_4.mp4" aria-label="Loop flight · view 1"></video>
+      <figcaption><h4>Loop flight · view 1</h4></figcaption>
+    </figure><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/flights/loop_onboard_5.jpg" data-src="./static/videos/flights/loop_onboard_5.mp4" aria-label="Loop flight · view 2"></video>
+      <figcaption><h4>Loop flight · view 2</h4></figcaption>
+    </figure><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/flights/loop_onboard_2.jpg" data-src="./static/videos/flights/loop_onboard_2.mp4" aria-label="Loop flight · view 3"></video>
+      <figcaption><h4>Loop flight · view 3</h4></figcaption>
+    </figure><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/flights/obstacle_onboard_3.jpg" data-src="./static/videos/flights/obstacle_onboard_3.mp4" aria-label="Obstacle passage · view 1"></video>
+      <figcaption><h4>Obstacle passage · view 1</h4></figcaption>
+    </figure><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/flights/obstacle_onboard_4.jpg" data-src="./static/videos/flights/obstacle_onboard_4.mp4" aria-label="Obstacle passage · view 2"></video>
+      <figcaption><h4>Obstacle passage · view 2</h4></figcaption>
+    </figure><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/flights/dense_onboard_4.jpg" data-src="./static/videos/flights/dense_onboard_4.mp4" aria-label="Flying through clutter · view 1"></video>
+      <figcaption><h4>Flying through clutter · view 1</h4></figcaption>
+    </figure><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/flights/dense_onboard_5.jpg" data-src="./static/videos/flights/dense_onboard_5.mp4" aria-label="Flying through clutter · view 2"></video>
+      <figcaption><h4>Flying through clutter · view 2</h4></figcaption>
+    </figure><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/flights/corridor_chairs_onboard.jpg" data-src="./static/videos/flights/corridor_chairs_onboard.mp4" aria-label="Inside the chair-lined passage"></video>
+      <figcaption><h4>Inside the chair-lined passage</h4></figcaption>
+    </figure><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/flights/corridor_turn_onboard.jpg" data-src="./static/videos/flights/corridor_turn_onboard.mp4" aria-label="Turning through the corridor"></video>
+      <figcaption><h4>Turning through the corridor</h4></figcaption>
+    </figure></div>
+    </div>
+  </section>
+
+  <section class="section section--soft" id="obstacle-flights">
+    <div class="container">
+      <div class="section-heading"><h2>Formation Adaptation in Clutter</h2><p>More flight recordings through foam blocks, cylinders, and narrow gaps in the hall.</p></div>
+      <div class="video-grid grid-2 "><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/hall_x5.jpg" data-src="./static/videos/hall_x5.mp4" aria-label="Six robots, multiple obstacles"></video>
+      <figcaption><span class="view-label">External camera</span><h4>Six robots, multiple obstacles</h4><p>The formation adapts around foam blocks and cylinders.</p></figcaption>
+    </figure><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/hall_x5_1.jpg" data-src="./static/videos/hall_x5_1.mp4" aria-label="A second pass through the course"></video>
+      <figcaption><span class="view-label">External camera</span><h4>A second pass through the course</h4><p>Another recorded encounter with the cluttered course.</p></figcaption>
+    </figure><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/pcd_hall_str_a.jpg" data-src="./static/videos/pcd_hall_str_a.mp4" aria-label="Straight-course flight"></video>
+      <figcaption><span class="view-label">Point-cloud view</span><h4>Straight-course flight</h4><p>Trajectories through the measured obstacle geometry.</p></figcaption>
+    </figure><figure class="video-item">
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/pcd_hall_str_b.jpg" data-src="./static/videos/pcd_hall_str_b.mp4" aria-label="A second straight-course flight"></video>
+      <figcaption><span class="view-label">Point-cloud view</span><h4>A second straight-course flight</h4><p>Another recorded passage through the hall.</p></figcaption>
+    </figure></div>
+    </div>
+  </section>
+</main>
+
+<footer class="page-footer">
+  <div class="container">
+    <a class="back-to-top" href="#top">Back to top ↑</a>
+    <p>Website adapted from <a href="https://nerfies.github.io/" target="_blank" rel="noopener">Nerfies</a>, with visual inspiration from <a href="https://agile-but-safe.github.io/" target="_blank" rel="noopener">Agile But Safe</a>.<br>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.</p>
+  </div>
+</footer>
+
+<dialog class="figure-dialog" id="figure-dialog" aria-label="Enlarged research figure">
+  <button class="dialog-close" type="button" aria-label="Close enlarged figure">×</button>
+  <img alt="">
+</dialog>
+</body>
+</html>
